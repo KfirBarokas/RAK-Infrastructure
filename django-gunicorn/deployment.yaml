@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-gunicorn
+  labels:
+    app: django-gunicorn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-gunicorn
+  template:
+    metadata:
+      labels:
+        app: django-gunicorn
+      annotations:
+        k8s.v1.cni.cncf.io/networks: vpc-cni
+        vpc.amazonaws.com/pod-eni: "true"
+        vpc.amazonaws.com/security-groups: sg-074d615964678ea98
+    spec:
+      containers:
+      - name: django-gunicorn
+        image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/rak:django-gunicorn
+        ports:
+        - containerPort: 8001
+      imagePullSecrets:
+        - name: image-pull
