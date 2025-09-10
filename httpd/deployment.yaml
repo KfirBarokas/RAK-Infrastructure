@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd
+  labels:
+    app: httpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: httpd
+        image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/rak:httpd
+        ports:
+        - containerPort: 80
+        #- containerPort: 443
+      imagePullSecrets:
+        - name: image-pull
