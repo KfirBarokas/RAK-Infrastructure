@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd
+spec:
+  selector:
+    app: httpd   # must match your Apache pod’s label
+  ports:
+    - port: 443
+      targetPort: 443
+  type: LoadBalancer   
