@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/rak:httpd
+        image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/rak-httpd:latest
         ports:
         - containerPort: 80
-        #- containerPort: 443
+        - containerPort: 443
       imagePullSecrets:
         - name: image-pull
