@@ -23,5 +23,8 @@ spec:
         image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/rak-django-gunicorn:latest
         ports:
         - containerPort: 8001
+         envFrom:
+        - secretRef:
+            name: rds-redis-credentials
       imagePullSecrets:
         - name: image-pull
