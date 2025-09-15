@@ -5,7 +5,12 @@ metadata:
   labels:
     app: httpd
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1         
   selector:
     matchLabels:
       app: httpd
@@ -19,6 +24,6 @@ spec:
         image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/rak-httpd:latest
         ports:
         - containerPort: 80
-        - containerPort: 443
+        #- containerPort: 443
       imagePullSecrets:
         - name: image-pull

@@ -5,10 +5,12 @@ metadata:
   namespace: default
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:992382545251:certificate/arn:aws:acm:us-east-1:992382545251:certificate/f8323f54-b662-492d-bf21-59b613e7a4fd
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
 spec:
   ingressClassName: alb
   rules:
-  - host: rak-app.com # the route53 domain
+  - host: rak-project.click # the route53 domain
     http:
       paths:
       - path: /
