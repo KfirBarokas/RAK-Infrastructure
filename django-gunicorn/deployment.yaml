@@ -27,5 +27,12 @@ spec:
         envFrom: 
         - secretRef:
             name: rds-redis-credentials
+        volumeMounts:
+        - name: static-files
+          mountPath: /opt/status-page/statuspage/static
       imagePullSecrets:
         - name: image-pull
+      volumes:
+      - name: static-files
+        persistentVolumeClaim:
+          claimName: static-files-pvc
