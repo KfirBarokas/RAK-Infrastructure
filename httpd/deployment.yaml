@@ -6,7 +6,6 @@ metadata:
     app: httpd
 spec:
   replicas: 2
-  revisionHistoryLimit: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
